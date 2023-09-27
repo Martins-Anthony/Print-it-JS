@@ -17,22 +17,23 @@ const slides = [
 	}
 ]
 
-let arrowLeft = document.querySelector(".arrow_left")
-let arrowRight = document.querySelector(".arrow_right")
-let bannerImg = document.querySelector(".banner-img")
-let bannerMove = 0
-let bannerText = document.querySelector("#banner p")
-
-let dots = document.querySelector(".dots")
+const arrowLeft = document.querySelector(".arrow_left")
+const arrowRight = document.querySelector(".arrow_right")
+const bannerImg = document.querySelector(".banner-img")
+const bannerText = document.querySelector("#banner p")
+const dots = document.querySelector(".dots")
 let divDots = document.createElement("div")
-let nbrSlides = 0
+let nbrSlides = slides.length -1
+let bannerMove = 0
 
 for (let i = 0; i < slides.length; i++) {
 	divDots = document.createElement("div")
 	dots.appendChild(divDots)
 	divDots.classList.add("dot")
-	nbrSlides = i
 }
+
+let dotSelected = document.querySelector(".dot")
+dotSelected.classList.add("dot_selected")
 
 function moveBanner (move) {
 	dotSelected.classList.remove("dot_selected")
@@ -42,16 +43,13 @@ function moveBanner (move) {
 	bannerText.innerHTML = `${slides[move].tagLine}`
 }
 
-let dotSelected = document.querySelector(".dot")
-dotSelected.classList.add("dot_selected")
-
 arrowLeft.addEventListener("click", () => {
 	bannerMove--
-	if (bannerMove <= -1) {
+	if (bannerMove === -1) {
 		bannerMove = nbrSlides
 	}
 	moveBanner(bannerMove)
-	console.log("test clic gauche") 
+	console.log("test clic gauche")
 })
 
 arrowLeft.addEventListener("contextmenu", (event) => {
@@ -64,10 +62,9 @@ arrowRight.addEventListener("click", () => {
 		bannerMove = 0
 	}
 	moveBanner(bannerMove)
-	console.log("test clic droit")
+	console.log("test clic gauche")
 })
 
 arrowRight.addEventListener("contextmenu", (event) => {
 	event.preventDefault() // Clic droit désactiver
 })
-
