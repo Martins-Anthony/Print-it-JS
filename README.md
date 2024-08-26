@@ -1,4 +1,4 @@
-# Premiers Pas sur le Langage JavaScript
+# Print-it-JS - Premiers Pas sur le Langage JavaScript
 
 ## Description du Projet
 
